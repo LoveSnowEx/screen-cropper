@@ -52,5 +52,6 @@ func (a *App) startup(ctx context.Context) {
 
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
+	go a.screen.Capture()
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }

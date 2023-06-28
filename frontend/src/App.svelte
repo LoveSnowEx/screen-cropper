@@ -7,6 +7,23 @@
 
     function greet(): void {
         Greet(name).then((result) => (resultText = result))
+        getImage()
+    }
+
+    const getImage = async () => {
+        try {
+            const response = await fetch("screen.png")
+            if (response.ok) {
+                const blob = await response.blob()
+                const imageUrl = URL.createObjectURL(blob)
+                const imageElement = document.getElementById("logo") as HTMLImageElement
+                imageElement.src = imageUrl
+            } else {
+                console.error("failed to fetch image")
+            }
+        } catch (error) {
+            console.error("error:", error)
+        }
     }
 </script>
 
