@@ -6,6 +6,7 @@ import (
 
 	_ "embed"
 
+	"github.com/LoveSnowEx/screen-cropper/pkg/screen"
 	"github.com/LoveSnowEx/screen-cropper/pkg/systray"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
@@ -15,12 +16,15 @@ var icon []byte
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx    context.Context
+	screen screen.Screen
 }
 
 // NewApp creates a new App application struct
 func NewApp() *App {
-	return &App{}
+	return &App{
+		screen: screen.NewScreen(screen.MaxBound()),
+	}
 }
 
 // bindSystray binds the systray to the app
