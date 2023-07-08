@@ -17,7 +17,7 @@
             if (response.ok) {
                 const blob = await response.blob()
                 const imageUrl = URL.createObjectURL(blob)
-                const imageElement = document.getElementById("logo") as HTMLImageElement
+                const imageElement = document.getElementById("screenshot") as HTMLImageElement
                 imageElement.src = imageUrl
             } else {
                 console.error("failed to fetch image")
@@ -33,11 +33,11 @@
 </script>
 
 <main>
-    <img alt="Wails logo" id="logo" src={logo}/>
+    <img alt="Sreentshot" id="screenshot" src={logo} />
 </main>
 
 <style>
-    #logo {
+    #screenshot {
         display: block;
         width: 100vw;
         height: 100vh;
