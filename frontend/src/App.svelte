@@ -1,6 +1,7 @@
 <script lang="ts">
     import logo from "./assets/images/logo-universal.png"
     import { Greet } from "../wailsjs/go/main/App.js"
+    import { EventsOn } from "../wailsjs/runtime/runtime.js"
 
     let resultText: string = "Please enter your name below 👇"
     let name: string
@@ -25,6 +26,10 @@
             console.error("error:", error)
         }
     }
+
+    EventsOn("capture", () => {
+        greet()
+    })
 </script>
 
 <main>
