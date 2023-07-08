@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	_ "embed"
@@ -50,6 +49,7 @@ func (a *App) bindSystray() {
 func (a *App) bindKeyboard() {
 	// Register the hotkey
 	keyboard.RegisterHotkey(keyboard.NewHotkey(types.VK_LCONTROL, types.VK_LMENU, types.VK_A), func() {
+		a.screen.Capture()
 		runtime.EventsEmit(a.ctx, "capture")
 	})
 	// Start the keyboard
@@ -71,10 +71,4 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	a.bindSystray()
 	a.bindKeyboard()
-}
-
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	go a.screen.Capture()
-	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
