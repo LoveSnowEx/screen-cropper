@@ -1,6 +1,6 @@
 module github.com/LoveSnowEx/screen-cropper
 
-go 1.18
+go 1.20
 
 require (
 	fyne.io/systray v1.10.0
